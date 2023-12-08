@@ -5,13 +5,13 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('karo-dockerhub')
-    APP_NAME = "ooghenekaro/bluegreen-rollout-oct"
+    DOCKERHUB_CREDENTIALS = credentials('lily-docker-credentials')
+    APP_NAME = "laly9999/bluegreen-rollout"
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-           git branch: 'main', url: 'https://github.com/ooghenekaro/Argo-rollout-nodejs.git'
+           git branch: 'main', url: 'https://github.com/lily4499/argo-rollout-nodejs.git'
             }
         }
         // run sonarqube test
