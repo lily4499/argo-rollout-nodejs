@@ -1,4 +1,4 @@
-pipeline {
+p-ibtpipeline {
     agent any 
 
      options {
@@ -6,12 +6,12 @@ pipeline {
      }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('lily-docker-credentials')
-    APP_NAME = "laly9999/bluegreen-rollout"
+    APP_NAME = "laly9999/node-app-ibt"
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-           git branch: 'main', url: 'https://github.com/lily4499/argo-rollout-nodejs.git'
+           git branch: 'main', url: 'https://github.com/lily4499/node-app-ibt.git'
             }
         }
         // run sonarqube test
@@ -47,7 +47,7 @@ pipeline {
         }
         stage('Trigger ManifestUpdate') {
              steps{
-                build job: 'rollout-manifests', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]     
+                build job: 'node-app-ibt-manifest', parameters: [string(name: 'IMAGETAG', value: env.BUILD_NUMBER)]     
 
             } 
            } 
