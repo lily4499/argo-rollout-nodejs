@@ -1,4 +1,4 @@
-p-ibtpipeline {
+pipeline {
     agent any 
 
      options {
